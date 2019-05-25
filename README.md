@@ -1,6 +1,6 @@
 # vulconst
 
-Compute the Vulcan Constant, the decimal expansion of the number constructed from concatenating all possible finite bit strings in canonical order.
+Compute the Vulcan Constant, the decimal expansion of the number constructed from concatenating all possible finite bit strings in canonical order: `0, 1, 00, 01, 10, 11, 000, 001, 010, 011, 100, 101, 110, 111, ...`
 
 ```
 $ python vulconst.py
