@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from bigfloat import *
+import string
 
 def GenerateBitstring(bitstring, suffix, recurse):
     if recurse == 0:
@@ -11,11 +12,12 @@ def GenerateBitstring(bitstring, suffix, recurse):
     return bitstring
 
 VulcanBinary = ""
-for i in range(1,9):
+MaxRecursion = 8
+
+for i in range(1,MaxRecursion+1):
     VulcanBinary = GenerateBitstring(VulcanBinary, "", i)
 
 print '.' + VulcanBinary
-print len(VulcanBinary)
 
 with precision(2000):
     VulcanDecimal = BigFloat(0)
@@ -27,3 +29,4 @@ with precision(2000):
             VulcanDecimal = VulcanDecimal+b
 
 print VulcanDecimal
+print string.join([x + ', ' for x in str(VulcanDecimal)[2:]])
