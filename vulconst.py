@@ -2,17 +2,17 @@
 
 from bigfloat import *
 
-def GenerateBinary(B, S, W, R):
-    if R == 0:
-        B = B + S
+def GenerateBitstring(bitstring, suffix, recurse):
+    if recurse == 0:
+        bitstring = bitstring + suffix
     else:
-        B = GenerateBinary(B, S + "0", W, R-1)
-        B = GenerateBinary(B, S + "1", W, R-1)
-    return B
+        bitstring = GenerateBitstring(bitstring, suffix + "0", recurse-1)
+        bitstring = GenerateBitstring(bitstring, suffix + "1", recurse-1)
+    return bitstring
 
 VulcanBinary = ""
 for i in range(1,9):
-    VulcanBinary = GenerateBinary(VulcanBinary, "", i, i)
+    VulcanBinary = GenerateBitstring(VulcanBinary, "", i)
 
 print '.' + VulcanBinary
 print len(VulcanBinary)
