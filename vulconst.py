@@ -2,19 +2,17 @@
 
 from bigfloat import *
 
-VulcanBinary = ""
-
-def GenerateBinary(S, W, R):
-    global VulcanBinary
-
+def GenerateBinary(B, S, W, R):
     if R == 0:
-        VulcanBinary = VulcanBinary + S
+        B = B + S
     else:
-        GenerateBinary(S + "0", W, R-1)
-        GenerateBinary(S + "1", W, R-1)
+        B = GenerateBinary(B, S + "0", W, R-1)
+        B = GenerateBinary(B, S + "1", W, R-1)
+    return B
 
+VulcanBinary = ""
 for i in range(1,9):
-    GenerateBinary("", i, i)
+    VulcanBinary = GenerateBinary(VulcanBinary, "", i, i)
 
 print '.' + VulcanBinary
 print len(VulcanBinary)
